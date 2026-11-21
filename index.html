@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAP AYAM BC | LU PADU LU MARI</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #101010;
+  color: #ffffff;
+}
+
+:root {
+  --red: #e32636;
+  --gold: #f5c542;
+  --black: #101010;
+  --card: #1c1c1c;
+  --gray: #aaaaaa;
+}
+
+header {
+  background: #080808;
+  border-bottom: 2px solid var(--red);
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 900;
+  color: white;
+}
+
+.logo span {
+  color: var(--red);
+}
+
+.slogan {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-top: 5px;
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  margin-top: 15px;
+  padding-bottom: 5px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.hero {
+  padding: 55px 20px;
+  text-align: center;
+  background:
+    linear-gradient(135deg, #300609, #111111 65%);
+}
+
+.hero .tag {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  font-weight: 900;
+  margin: 20px 0;
+  line-height: 1.1;
+}
+
+.hero h1 span {
+  color: var(--red);
+}
+
+.hero p {
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  padding: 13px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 22px;
+}
+
+section {
+  padding: 30px 16px;
+}
+
+.section-title {
+  font-size: 23px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.section-title span {
+  color: var(--red);
+}
+
+.subtitle {
+  color: var(--gray);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.stat {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.stat-label {
+  color: #bbbbbb;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.match {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 12px;
+  border-left: 4px solid var(--red);
+}
+
+.match-date {
+  color: var(--gold);
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.match-title {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.match-info {
+  color: var(--gray);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 13px 8px;
+  text-align: center;
+  font-size: 13px;
+  border-bottom: 1px solid #333;
+}
+
+th {
+  background: #292929;
+  color: var(--gold);
+}
+
+td:first-child {
+  font-weight: bold;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+.draw-box {
+  background: var(--card);
+  border: 1px solid #444;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+input, textarea {
+  width: 100%;
+  background: #101010;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 12px;
+  color: white;
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+button {
+  background: var(--red);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  padding: 13px 20px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 18px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--gold);
+  white-space: pre-line;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.gallery-item {
+  background: #292929;
+  height: 120px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-size: 30px;
+}
+
+footer {
+  background: #080808;
+  padding: 30px 20px;
+  text-align: center;
+  border-top: 2px solid var(--red);
+}
+
+footer h2 {
+  font-size: 22px;
+}
+
+footer p {
+  color: var(--gray);
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+@media (min-width: 700px) {
+  .hero h1 {
+    font-size: 65px;
+  }
+
+  section {
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🐓 CAP <span>AYAM</span> BC</div>
+  <div class="slogan">LU PADU LU MARI</div>
+
+  <nav>
+    <a href="#home">HOME</a>
+    <a href="#kelab">KELAB</a>
+    <a href="#ranking">RANKING</a>
+    <a href="#match">MATCH</a>
+    <a href="#cabutan">CABUT PAIR</a>
+    <a href="#tournament">TOURNAMENT</a>
+    <a href="#galeri">GALERI</a>
+  </nav>
+</header>
+
+<div class="hero" id="home">
+  <div class="tag">MELAKA BADMINTON CLUB</div>
+
+  <h1>LU PADU<br><span>LU MARI!</span></h1>
+
+  <p>
+    Satu gelanggang.<br>
+    Satu semangat.<br>
+    Satu keluarga.
+  </p>
+
+  <a href="#ranking" class="btn">LIHAT RANKING PEMAIN</a>
+</div>
+
+<section id="kelab">
+  <h2 class="section-title">CAP AYAM <span>BC</span></h2>
+
+  <p class="subtitle">
+    Komuniti badminton yang mengutamakan semangat,
+    persahabatan dan persaingan sihat.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="stat">🏸</div>
+      <div class="stat-label">BADMINTON</div>
+    </div>
+
+    <div class="card">
+      <div class="stat">🤝</div>
+      <div class="stat-label">PERSAHABATAN</div>
+    </div>
+
+    <div class="card">
+      <div class="stat">🏆</div>
+      <div class="stat-label">KEMENANGAN</div>
+    </div>
+
+    <div class="card">
+      <div class="stat">🔥</div>
+      <div class="stat-label">SEMANGAT</div>
+    </div>
+  </div>
+</section>
+
+<section id="ranking">
+  <h2 class="section-title">PLAYER <span>RANKING</span></h2>
+  <p class="subtitle">Menang = 3 mata | Kalah = 0 mata</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>POS</th>
+        <th>PEMAIN</th>
+        <th>W</th>
+        <th>L</th>
+        <th>PTS</th>
+      </tr>
+    </thead>
+
+    <tbody id="rankingTable"></tbody>
+  </table>
+</section>
+
+<section id="match">
+  <h2 class="section-title">NEXT <span>MATCH</span></h2>
+  <p class="subtitle">Jadual perlawanan kelab</p>
+
+  <div class="match">
+    <div class="match-date">28 NOVEMBER 2026 | 8:30 MALAM</div>
+    <div class="match-title">🏆 INTERNAL GAME CAP AYAM BC</div>
+    <div class="match-info">
+      Format: Liga cabut undi<br>
+      Yuran: RM35<br>
+      Hadiah lumayan menanti!
+    </div>
+  </div>
+
+  <div class="match">
+    <div class="match-date">AKAN DATANG</div>
+    <div class="match-title">🏸 FRIENDLY MATCH</div>
+    <div class="match-info">Tarikh dan masa akan diumumkan.</div>
+  </div>
+</section>
+
+<section id="cabutan">
+  <h2 class="section-title">RANDOM <span>PAIR DRAW</span></h2>
+
+  <p class="subtitle">
+    Masukkan nama pemain. Sistem akan cabut pasangan secara rawak.
+  </p>
+
+  <div class="draw-box">
+    <textarea id="players" rows="5"
+      placeholder="Masukkan nama pemain satu baris satu nama"></textarea>
+
+    <button onclick="drawPairs()">🎲 CABUT PASANGAN</button>
+
+    <div class="result" id="drawResult"></div>
+  </div>
+</section>
+
+<section id="tournament">
+  <h2 class="section-title">TOURNAMENT <span>& EVENT</span></h2>
+
+  <div class="match">
+    <div class="match-date">28 NOVEMBER 2026</div>
+    <div class="match-title">CAP AYAM BC INTERNAL GAME</div>
+    <div class="match-info">
+      Liga cabut undi<br>
+      1 kumpulan 3 orang<br>
+      Pendaftaran ditutup: 23 November 2026
+    </div>
+  </div>
+</section>
+
+<section id="galeri">
+  <h2 class="section-title">CLUB <span>GALLERY</span></h2>
+  <p class="subtitle">Kenangan dan aktiviti CAP AYAM BC</p>
+
+  <div class="gallery">
+    <div class="gallery-item">🏸</div>
+    <div class="gallery-item">🏆</div>
+    <div class="gallery-item">🐓</div>
+    <div class="gallery-item">🔥</div>
+  </div>
+</section>
+
+<footer>
+  <h2>🐓 CAP AYAM BC</h2>
+  <p>LU PADU LU MARI</p>
+  <p>© 2026 CAP AYAM BC | MELAKA</p>
+</footer>
+
+<script>
+const playersData = [
+  {name:"Player 1", wins:8, losses:2},
+  {name:"Player 2", wins:7, losses:3},
+  {name:"Player 3", wins:6, losses:4},
+  {name:"Player 4", wins:5, losses:5},
+  {name:"Player 5", wins:4, losses:6},
+  {name:"Player 6", wins:3, losses:7}
+];
+
+function renderRanking() {
+  const sorted = [...playersData].sort(
+    (a,b) => (b.wins*3) - (a.wins*3)
+  );
+
+  document.getElementById("rankingTable").innerHTML =
+    sorted.map((p,i) => `
+      <tr>
+        <td>${i+1}</td>
+        <td>${p.name}</td>
+        <td>${p.wins}</td>
+        <td>${p.losses}</td>
+        <td class="gold">${p.wins*3}</td>
+      </tr>
+    `).join("");
+}
+
+function drawPairs() {
+  const names = document.getElementById("players")
+    .value.split("\n")
+    .map(n => n.trim())
+    .filter(n => n.length > 0);
+
+  if(names.length < 4) {
+    document.getElementById("drawResult").innerText =
+      "Masukkan sekurang-kurangnya 4 pemain.";
+    return;
+  }
+
+  for(let i=names.length-1; i>0; i--) {
+    const j=Math.floor(Math.random()*(i+1));
+    [names[i],names[j]]=[names[j],names[i]];
+  }
+
+  let output="";
+
+  for(let i=0; i<names.length-1; i+=2) {
+    output += "PAIR "+((i/2)+1)+":\n";
+    output += names[i]+" + "+names[i+1]+"\n\n";
+  }
+
+  if(names.length%2!==0) {
+    output += "PEMAIN REHAT:\n"+names[names.length-1];
+  }
+
+  document.getElementById("drawResult").innerText=output;
+}
+
+renderRanking();
+</script>
+
+</body>
+  </html>
